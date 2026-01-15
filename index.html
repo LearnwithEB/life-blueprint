@@ -111,9 +111,14 @@
         }
 
         .creator-image {
-            filter: grayscale(10%) contrast(105%);
+            filter: contrast(105%) brightness(1.02);
             border: 6px solid #F59E0B;
-            object-position: center top;
+            object-position: center center;
+            transition: transform 0.3s ease;
+        }
+        
+        .creator-image:hover {
+            transform: scale(1.02);
         }
 
         .export-loading {
