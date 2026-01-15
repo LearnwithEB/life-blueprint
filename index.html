@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An interactive experience inspired by Dr. Martin Luther King Jr.'s 'What Is Your Life's Blueprint?' speech. Create your life blueprint based on three principles: Dignity, Excellence, and Persistence.">
+    <meta name="keywords" content="MLK, Martin Luther King, life blueprint, personal development, dignity, excellence, persistence, interactive experience">
+    <meta name="author" content="Eric Brown Jr. - Elvte Labs">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourusername.github.io/life-blueprint/">
+    <meta property="og:title" content="Your Life Blueprint: Interactive Experience">
+    <meta property="og:description" content="An interactive experience inspired by Dr. Martin Luther King Jr.'s 'What Is Your Life's Blueprint?' speech.">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=1200&auto=format&fit=crop">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourusername.github.io/life-blueprint/">
+    <meta property="twitter:title" content="Your Life Blueprint: Interactive Experience">
+    <meta property="twitter:description" content="An interactive experience inspired by Dr. Martin Luther King Jr.'s 'What Is Your Life's Blueprint?' speech.">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=1200&auto=format&fit=crop">
+    
+    <title>Your Life Blueprint: Interactive Experience</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F8FAFC; 
+            color: #1E293B;
+            scroll-behavior: smooth;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        .blueprint-grid {
+            background-image: linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        .card-shadow {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .quote-box::before {
+            content: """;
+            position: absolute;
+            top: -20px;
+            left: 10px;
+            font-size: 80px;
+            color: #1E40AF;
+            opacity: 0.1;
+            font-family: serif;
+        }
+
+        .step-stair {
+            border-left: 4px solid #1E40AF;
+            border-bottom: 4px solid #1E40AF;
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+        }
+
+        input[type="range"] {
+            accent-color: #F59E0B;
+        }
+
+        .hidden-view {
+            display: none;
+        }
+
+        .blueprint-border {
+            border: 10px double #1E40AF;
+        }
+
+        .pillar-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .creator-image {
+            filter: grayscale(10%) contrast(105%);
+            border: 6px solid #F59E0B;
+            object-position: center top;
+        }
+    </style>
+</head>
+<body class="blueprint-grid min-h-screen">
+
+    <!-- NAVIGATION VIEW: INFOGRAPHIC -->
+    <div id="view-infographic">
+        <header class="bg-blue-800 text-white py-20 px-4 shadow-lg mb-10 relative overflow-hidden text-center">
+            <div class="max-w-6xl mx-auto relative z-10">
+                <h1 class="text-4xl md:text-7xl font-extrabold mb-4 tracking-tight uppercase leading-tight">Your Life Blueprint</h1>
+                <p class="text-xl md:text-2xl font-light text-blue-100 mb-8 italic">"Be the best of whatever you are."</p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <button onclick="scrollToId('pillar-one')" class="bg-amber-500 text-blue-900 font-bold px-6 py-3 rounded-full shadow-lg hover:bg-amber-400 transition transform hover:scale-105">1. Dignity</button>
+                    <button onclick="scrollToId('pillar-two')" class="bg-amber-500 text-blue-900 font-bold px-6 py-3 rounded-full shadow-lg hover:bg-amber-400 transition transform hover:scale-105">2. Excellence</button>
+                    <button onclick="scrollToId('pillar-three')" class="bg-amber-500 text-blue-900 font-bold px-6 py-3 rounded-full shadow-lg hover:bg-amber-400 transition transform hover:scale-105">3. Persistence</button>
+                    <button onclick="showView('drafting')" class="bg-white text-blue-800 font-bold px-8 py-3 rounded-full shadow-lg hover:bg-blue-50 transition transform hover:scale-105">Draft My Blueprint</button>
+                </div>
+            </div>
+            <div class="absolute inset-0 opacity-10 pointer-events-none blueprint-grid"></div>
+        </header>
+
+        <main class="max-w-6xl mx-auto px-4 pb-20 space-y-24">
+
+            <!-- Auditorium Image Integration -->
+            <section class="mt-[-40px] relative z-20">
+                <div class="rounded-3xl overflow-hidden shadow-2xl border-8 border-white card-shadow">
+                    <img 
+                        src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?q=80&w=1200&auto=format&fit=crop" 
+                        alt="Historic Auditorium - Barratt Junior High School" 
+                        class="w-full h-64 md:h-[450px] object-cover"
+                        loading="lazy"
+                        onerror="this.src='https://via.placeholder.com/1200x600?text=The+Barratt+Junior+High+Auditorium'"
+                    />
+                    <div class="bg-white p-4 text-center border-t border-gray-100">
+                        <p class="text-gray-400 text-xs font-bold uppercase tracking-widest">Barratt Junior High School Auditorium • Philadelphia, PA (1967)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Context Section -->
+            <section class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="bg-white p-10 rounded-3xl card-shadow border border-blue-100 relative quote-box overflow-hidden">
+                    <h2 class="text-3xl font-bold text-blue-800 mb-6 uppercase">The Pattern of Your Life</h2>
+                    <p class="text-gray-600 leading-relaxed text-lg mb-6">
+                        Speaking to the students of Barratt Junior High, Dr. King emphasized that youth is the most <strong>crucial period</strong> of existence. Like an architect drawing a pattern before a building is erected, the decisions made at this age serve as the guide for the structure of one's entire life.
+                    </p>
+                    <div class="p-6 bg-blue-50 border-l-8 border-blue-800 rounded-r-2xl">
+                        <p class="text-blue-900 font-semibold text-lg leading-snug italic">
+                            "What you do now and what you decide now at this age may well determine which way your life shall go."
+                        </p>
+                    </div>
+                </div>
+                
+                <div id="speech" class="w-full">
+                    <h3 class="text-blue-800 font-bold mb-4 uppercase tracking-widest text-sm flex items-center gap-2">
+                        <span class="w-8 h-1 bg-amber-500 rounded"></span> The Barratt Speech (1967)
+                    </h3>
+                    <div class="aspect-video w-full rounded-3xl overflow-hidden shadow-2xl bg-black border-4 border-white">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/ZmtOGXreTOU" title="What Is Your Life's Blueprint?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PILLAR ONE: DIGNITY & SOMEBODINESS -->
+            <section id="pillar-one" class="scroll-mt-10">
+                <div class="bg-white p-10 rounded-3xl card-shadow border border-blue-100 overflow-hidden">
+                    <div class="pillar-badge bg-blue-100 text-blue-800">Principle Number One</div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div>
+                            <h2 class="text-4xl font-black text-blue-800 mb-6 uppercase leading-tight">Dignity, Worth, & Somebodiness</h2>
+                            <p class="text-gray-600 text-lg mb-8">
+                                Dr. King's first instruction: Believe deeply in your own "Somebodiness." He addressed the societal stigma placed on color and biological features with a call for radical pride.
+                            </p>
+                            <div class="space-y-6">
+                                <div class="bg-blue-50 p-6 rounded-2xl border-l-4 border-blue-800">
+                                    <p class="font-bold text-blue-900 italic text-xl">"I Am Black But Beautiful!"</p>
+                                    <p class="text-sm text-blue-700 mt-2">Reject the lulls of cosmetics or hair processes meant to hide who you are. Your hair is "as good as anybody else's in the world."</p>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="text-amber-500 text-2xl font-bold">✓</div>
+                                    <p class="text-gray-700">Don't allow anybody to make you feel that you are nobody.</p>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="text-amber-500 text-2xl font-bold">✓</div>
+                                    <p class="text-gray-700">Always feel that your life has <strong>ultimate significance</strong>.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-center">
+                             <div class="chart-container"><canvas id="worthDoughnut"></canvas></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PILLAR TWO: EXCELLENCE -->
+            <section id="pillar-two" class="scroll-mt-10">
+                <div class="bg-blue-800 p-10 rounded-3xl card-shadow text-white relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10 pointer-events-none blueprint-grid"></div>
+                    <div class="relative z-10">
+                        <div class="pillar-badge bg-amber-500 text-blue-900">Principle Number Two</div>
+                        <h2 class="text-4xl font-black mb-6 uppercase leading-tight">The Determination to Achieve Excellence</h2>
+                        <p class="text-blue-100 text-lg mb-10 max-w-3xl">
+                            Dr. King challenged students to avoid setting out for a "good Negro job." Instead, strive to be so excellent that you enter the <strong>University of Integration</strong> by sheer mastery of your craft.
+                        </p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                            <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-center">
+                                <div class="text-3xl mb-3">&#127912;</div>
+                                <h4 class="font-bold mb-1">Michelangelo</h4>
+                                <p class="text-xs text-blue-200">Paint pictures with absolute precision.</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-center">
+                                <div class="text-3xl mb-3">&#127929;</div>
+                                <h4 class="font-bold mb-1">Beethoven</h4>
+                                <p class="text-xs text-blue-200">Compose music with world-class harmony.</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-center">
+                                <div class="text-3xl mb-3">&#127913;</div>
+                                <h4 class="font-bold mb-1">Leontyne Price</h4>
+                                <p class="text-xs text-blue-200">Sing with the power of the Metropolitan Opera.</p>
+                            </div>
+                            <div class="bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20 text-center">
+                                <div class="text-3xl mb-3">&#9997;</div>
+                                <h4 class="font-bold mb-1">Shakespeare</h4>
+                                <p class="text-xs text-blue-200">Write poetry that echoes through history.</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-amber-500 text-blue-900 p-8 rounded-2xl font-black text-xl md:text-2xl text-center italic transform -rotate-1 shadow-2xl">
+                            "Sweep streets so well that all the hosts of Heaven and Earth will have to pause and say: Here lived a great street sweeper who swept his job well."
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PILLAR THREE: PERSISTENCE & ETERNAL PRINCIPLES -->
+            <section id="pillar-three" class="scroll-mt-10">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div class="bg-white p-10 rounded-3xl card-shadow border border-blue-100">
+                        <div class="pillar-badge bg-blue-100 text-blue-800">Principle Number Three</div>
+                        <h2 class="text-4xl font-black text-blue-800 mb-6 uppercase">Eternal Principles & Movement</h2>
+                        <p class="text-gray-600 text-lg mb-8">
+                            A blueprint must include a commitment to <strong>Beauty, Love, and Justice</strong>. Recognizing that life is not a "crystal stair," we must maintain forward momentum at all costs.
+                        </p>
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-6"><div class="step-stair"></div><p class="font-extrabold text-blue-800 text-2xl italic">"If you can't fly, RUN."</p></div>
+                            <div class="flex items-center gap-6 pl-10"><div class="step-stair"></div><p class="font-extrabold text-blue-800 text-2xl italic">"If you can't run, WALK."</p></div>
+                            <div class="flex items-center gap-6 pl-20"><div class="step-stair"></div><p class="font-extrabold text-blue-800 text-2xl italic">"If you can't walk, CRAWL."</p></div>
+                            <div class="pt-6 text-center">
+                                <span class="bg-blue-800 text-white px-8 py-3 rounded-full font-black uppercase text-xl animate-pulse">KEEP MOVING!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-10 rounded-3xl card-shadow border border-gray-100 flex flex-col items-center">
+                         <h3 class="font-bold text-blue-800 uppercase mb-6 tracking-widest text-sm">Balanced Matriculation Radar</h3>
+                         <div class="chart-container h-[350px]"><canvas id="interactiveRadar"></canvas></div>
+                         <div class="mt-6 space-y-4 w-full px-4">
+                            <div class="flex justify-between items-center"><label class="font-bold text-blue-800 text-xs uppercase">Dignity</label><input type="range" id="input-worth" min="10" max="100" value="80" class="w-1/2"></div>
+                            <div class="flex justify-between items-center"><label class="font-bold text-blue-800 text-xs uppercase">Excellence</label><input type="range" id="input-work" min="10" max="100" value="85" class="w-1/2"></div>
+                            <div class="flex justify-between items-center"><label class="font-bold text-blue-800 text-xs uppercase">Persistence</label><input type="range" id="input-persistence" min="10" max="100" value="90" class="w-1/2"></div>
+                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- THE POEM SECTION -->
+            <section class="bg-blue-50 p-10 rounded-3xl border-2 border-dashed border-blue-200 text-center">
+                <h2 class="text-3xl font-black text-blue-800 mb-10 uppercase tracking-widest">"Be the BEST of whatever you are"</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-blue-100">
+                        <p class="text-gray-400 text-xs font-bold mb-2 uppercase">Can't be a Pine?</p>
+                        <p class="text-xl font-black text-blue-800 italic uppercase">Be a Shrub</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-blue-100">
+                        <p class="text-gray-400 text-xs font-bold mb-2 uppercase">Can't be a Tree?</p>
+                        <p class="text-xl font-black text-blue-800 italic uppercase">Be a Bush</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-blue-100">
+                        <p class="text-gray-400 text-xs font-bold mb-2 uppercase">Can't be a Highway?</p>
+                        <p class="text-xl font-black text-blue-800 italic uppercase">Be a Trail</p>
+                    </div>
+                    <div class="p-6 bg-white rounded-2xl shadow-sm border border-blue-100">
+                        <p class="text-gray-400 text-xs font-bold mb-2 uppercase">Can't be a Sun?</p>
+                        <p class="text-xl font-black text-blue-800 italic uppercase">Be a Star</p>
+                    </div>
+                </div>
+                <div class="mt-10 p-8">
+                    <p class="text-2xl md:text-4xl font-black text-blue-900 leading-tight uppercase">
+                        "For it isn't by size that you win or you fail. Be the <span class="text-amber-500">BEST</span> of whatever you are."
+                    </p>
+                </div>
+            </section>
+
+            <!-- ABOUT THE CREATOR SECTION -->
+            <section id="creator" class="bg-white p-10 md:p-16 rounded-[3rem] card-shadow border-4 border-blue-50 relative overflow-hidden">
+                <div class="absolute -right-20 -top-20 w-64 h-64 bg-amber-50 rounded-full opacity-50 blur-3xl"></div>
+                <div class="flex flex-col lg:flex-row items-center gap-12 relative z-10">
+                    <div class="w-full lg:w-1/3">
+                        <div class="relative inline-block group">
+                            <div class="absolute -inset-2 bg-amber-500 rounded-full blur opacity-25 group-hover:opacity-40 transition"></div>
+                            <img 
+                                src="1757685421396.jpeg" 
+                                alt="Eric Brown Jr." 
+                                class="w-64 h-64 md:w-80 md:h-80 object-cover rounded-full creator-image shadow-2xl"
+                                onError="this.src='https://via.placeholder.com/400x400?text=Eric+Brown+Jr.'"
+                            />
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-2/3 text-center lg:text-left">
+                        <span class="text-amber-600 font-black text-sm uppercase tracking-widest">About the Creator</span>
+                        <h2 class="text-4xl md:text-5xl font-black text-blue-800 mt-2 mb-6">Eric Brown Jr.</h2>
+                        <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                            Eric Brown Jr. is a visionary creator and community builder dedicated to fostering a <strong>"Beloved Community"</strong> where everyone feels a deep sense of somebodiness and purpose. 
+                        </p>
+                        <div class="p-6 bg-blue-50 rounded-2xl border-l-8 border-blue-800 mb-8">
+                            <h4 class="text-blue-900 font-black text-sm uppercase mb-2">The Mission</h4>
+                            <p class="text-blue-800 italic font-medium leading-relaxed">
+                                "My work is about empowering the next generation to live with radical intention. We are building a world where every young architect has the tools to erect a life of ultimate significance, grounded in beauty, love, and justice."
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                            <a href="#" class="text-blue-800 font-bold hover:text-amber-500 transition border-b-2 border-blue-800 hover:border-amber-500">Connect with Eric</a>
+                            <span class="text-gray-300">|</span>
+                            <a href="#" class="text-blue-800 font-bold hover:text-amber-500 transition border-b-2 border-blue-800 hover:border-amber-500 underline-offset-4">Elvte Labs Portfolio</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- NAVIGATION VIEW: DRAFTING TABLE -->
+    <div id="view-drafting" class="hidden-view">
+        <header class="bg-blue-900 text-white py-12 px-4 shadow-md mb-10 text-center relative overflow-hidden">
+            <div class="max-w-4xl mx-auto relative z-10">
+                <h1 class="text-3xl md:text-5xl font-extrabold uppercase tracking-tight">The Drafting Table</h1>
+                <p class="text-blue-300 mt-2">Constructing your matriculation intentions.</p>
+                <button onclick="showView('infographic')" class="mt-4 text-xs font-bold uppercase tracking-widest text-blue-400 hover:text-white transition underline underline-offset-4">Back to Lessons</button>
+            </div>
+            <div class="absolute inset-0 opacity-20 pointer-events-none blueprint-grid"></div>
+        </header>
+
+        <main class="max-w-3xl mx-auto px-4 pb-20">
+            <div class="bg-white p-10 rounded-3xl shadow-2xl space-y-12">
+                <div class="space-y-8">
+                    <div class="border-b-2 border-gray-100 pb-8">
+                        <label class="block text-gray-400 font-black text-xs uppercase tracking-widest mb-2">Architect Name</label>
+                        <input type="text" id="draft-name" placeholder="Enter your name" class="w-full text-2xl font-bold border-none outline-none focus:ring-0">
+                    </div>
+
+                    <div class="bg-blue-50 p-6 rounded-2xl border-l-4 border-blue-800">
+                        <label class="block text-blue-900 font-bold text-xl mb-4 italic">"I count. I am somebody." — How will you honor your unique identity and inherent worth today?</label>
+                        <textarea id="draft-dignity" placeholder="I will take pride in my culture, my features, and my unique story because..." class="w-full bg-white border-2 border-blue-100 rounded-xl p-4 focus:border-blue-800 outline-none h-32"></textarea>
+                    </div>
+
+                    <div class="bg-amber-50 p-6 rounded-2xl border-l-4 border-amber-500">
+                        <label class="block text-amber-900 font-bold text-xl mb-4 italic">"The Standard of Excellence" — How will you perform your work so well that no one could do it better?</label>
+                        <textarea id="draft-excellence" placeholder="I will master my work so that even the hosts of heaven pause to notice..." class="w-full bg-white border-2 border-amber-100 rounded-xl p-4 focus:border-amber-500 outline-none h-32"></textarea>
+                    </div>
+
+                    <div class="bg-rose-50 p-6 rounded-2xl border-l-4 border-rose-500">
+                        <label class="block text-rose-900 font-bold text-xl mb-4 italic">"Keep Moving" — When you face a stair that isn't crystal, how will you find the strength to keep going?</label>
+                        <textarea id="draft-moving" placeholder="When I face obstacles, I will fly, run, walk, or crawl, but I will..." class="w-full bg-white border-2 border-rose-100 rounded-xl p-4 focus:border-rose-500 outline-none h-32"></textarea>
+                    </div>
+                </div>
+
+                <div class="text-center pt-8">
+                    <button onclick="generateBlueprint()" class="bg-blue-800 text-white py-5 px-12 rounded-full font-black uppercase tracking-[0.2em] shadow-2xl hover:bg-blue-900 transition transform hover:scale-110">Generate My Blueprint</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- NAVIGATION VIEW: RESULT VIEW -->
+    <div id="view-result" class="hidden-view min-h-screen flex items-center justify-center bg-blue-900 py-20 px-4">
+        <div class="max-w-4xl w-full bg-white p-12 md:p-20 rounded shadow-2xl blueprint-border relative">
+            <div class="absolute inset-0 opacity-5 pointer-events-none blueprint-grid"></div>
+            <div class="relative z-10 space-y-10">
+                <div class="text-center border-b-2 border-blue-100 pb-10">
+                    <h1 class="text-4xl md:text-5xl font-black text-blue-800 uppercase tracking-tighter" id="res-name-title">Blueprint</h1>
+                    <p class="text-gray-400 uppercase tracking-[0.3em] mt-2 font-bold text-xs">Architect of the University of Integration</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h4 class="text-[10px] font-black text-blue-800 uppercase tracking-widest mb-4">Identity & Somebodiness</h4>
+                        <p id="res-dignity" class="text-sm text-gray-700 italic border-l-4 border-blue-100 pl-4"></p>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-black text-blue-800 uppercase tracking-widest mb-4">Standard of Excellence</h4>
+                        <p id="res-excellence" class="text-sm text-gray-700 italic border-l-4 border-blue-100 pl-4"></p>
+                    </div>
+                    <div>
+                        <h4 class="text-[10px] font-black text-blue-800 uppercase tracking-widest mb-4">Persistence Oath</h4>
+                        <p id="res-moving" class="text-sm text-gray-700 italic border-l-4 border-blue-100 pl-4"></p>
+                    </div>
+                </div>
+
+                <div class="text-center pt-10 border-t-2 border-blue-100">
+                    <p class="text-xl font-black text-blue-800 uppercase italic">"Be the BEST of whatever you are."</p>
+                    <div class="mt-10 flex justify-center gap-4 no-print">
+                        <button onclick="window.print()" class="bg-blue-100 text-blue-800 font-bold px-6 py-2 rounded-full hover:bg-blue-200 transition">Print Draft</button>
+                        <button onclick="showView('infographic')" class="bg-gray-100 text-gray-800 font-bold px-6 py-2 rounded-full hover:bg-gray-200 transition">New Blueprint</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-blue-900 text-blue-200 py-16 text-center text-sm border-t border-blue-800 no-print">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="text-lg font-light italic mb-2 uppercase tracking-widest">Keep Moving Forward.</p>
+            <p class="font-bold text-amber-500 mb-8 uppercase tracking-[0.2em] text-xs">Built with love by <a href="#" class="underline underline-offset-4 hover:text-white transition">Elvte Labs</a></p>
+            <div class="flex justify-center gap-6 mb-8 opacity-60">
+                <a href="#view-infographic" class="hover:text-white">Experience</a>
+                <a href="#creator" class="hover:text-white">Creator</a>
+                <a href="#pillar-one" class="hover:text-white">Principles</a>
+            </div>
+            <p class="opacity-50 uppercase tracking-widest font-bold text-[10px]">&copy; 2024 Interactive Blueprint Experience • Inspired by Dr. King</p>
+        </div>
+    </footer>
+
+    <script>
+        // Global functions accessible from onclick handlers
+        const wrapLabel = (str) => {
+            if (str.length <= 16) return str;
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = words[0];
+            for (let i = 1; i < words.length; i++) {
+                if (currentLine.length + 1 + words[i].length <= 16) {
+                    currentLine += ' ' + words[i];
+                } else {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        };
+
+        const commonTooltipOptions = {
+            callbacks: {
+                title: function(tooltipItems) {
+                    const item = tooltipItems[0];
+                    let label = item.chart.data.labels[item.dataIndex];
+                    if (Array.isArray(label)) return label.join(' ');
+                    return label;
+                }
+            }
+        };
+
+        const showView = (viewId) => {
+            document.getElementById('view-infographic').classList.add('hidden-view');
+            document.getElementById('view-drafting').classList.add('hidden-view');
+            document.getElementById('view-result').classList.add('hidden-view');
+            document.getElementById('view-' + viewId).classList.remove('hidden-view');
+            window.scrollTo(0, 0);
+        };
+
+        const scrollToId = (id) => {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        };
+
+        const generateBlueprint = () => {
+            const name = document.getElementById('draft-name').value || "Your Name";
+            document.getElementById('res-name-title').innerText = name + "'s Blueprint";
+            document.getElementById('res-dignity').innerText = document.getElementById('draft-dignity').value || "No draft recorded.";
+            document.getElementById('res-excellence').innerText = document.getElementById('draft-excellence').value || "No draft recorded.";
+            document.getElementById('res-moving').innerText = document.getElementById('draft-moving').value || "No draft recorded.";
+            showView('result');
+        };
+
+        // Wait for DOM and Chart.js to be ready
+        function initCharts() {
+            if (typeof Chart === 'undefined') {
+                setTimeout(initCharts, 100);
+                return;
+            }
+
+            // Static Doughnut for Pillar One
+            const doughnutCanvas = document.getElementById('worthDoughnut');
+            if (doughnutCanvas) {
+                new Chart(doughnutCanvas.getContext('2d'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: [wrapLabel('Self Worth'), wrapLabel('Identity Pride'), wrapLabel('Dignity')],
+                        datasets: [{
+                            data: [33, 33, 33],
+                            backgroundColor: ['#1E40AF', '#F59E0B', '#E2E8F0'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false }, tooltip: commonTooltipOptions }
+                    }
+                });
+            }
+
+            // Interactive Radar Logic
+            const radarCanvas = document.getElementById('interactiveRadar');
+            if (radarCanvas) {
+                const radarCtx = radarCanvas.getContext('2d');
+                const radarData = {
+                    labels: [
+                        wrapLabel('Dignity'),
+                        wrapLabel('Excellence'),
+                        wrapLabel('Persistence'),
+                        wrapLabel('Eternal Values'),
+                        wrapLabel('Ready for Opportunity')
+                    ],
+                    datasets: [{
+                        label: 'Matriculation Strength',
+                        data: [80, 85, 90, 75, 65],
+                        backgroundColor: 'rgba(30, 64, 175, 0.2)',
+                        borderColor: '#1E40AF',
+                        pointBackgroundColor: '#F59E0B',
+                        pointBorderColor: '#fff',
+                        pointRadius: 6,
+                        borderWidth: 4,
+                        tension: 0.15
+                    }]
+                };
+
+                const myRadar = new Chart(radarCtx, {
+                    type: 'radar',
+                    data: radarData,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            r: {
+                                angleLines: { color: '#E2E8F0' },
+                                grid: { color: '#E2E8F0' },
+                                suggestedMin: 0,
+                                suggestedMax: 100,
+                                ticks: { display: false },
+                                pointLabels: { font: { family: 'Poppins', size: 10, weight: '800' }, color: '#1E40AF' }
+                            }
+                        },
+                        plugins: { legend: { display: false }, tooltip: commonTooltipOptions }
+                    }
+                });
+
+                const inputsMap = { 'worth': 0, 'work': 1, 'persistence': 2 };
+                Object.keys(inputsMap).forEach(id => {
+                    const input = document.getElementById(`input-${id}`);
+                    if (input) {
+                        input.addEventListener('input', (e) => {
+                            myRadar.data.datasets[0].data[inputsMap[id]] = parseInt(e.target.value);
+                            myRadar.update();
+                        });
+                    }
+                });
+            }
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initCharts);
+        } else {
+            initCharts();
+        }
+    </script>
+</body>
+</html>
