@@ -74,14 +74,14 @@
             top: -20px;
             left: 10px;
             font-size: 80px;
-            color: #1E293B;
+            color: #1E40AF;
             opacity: 0.1;
             font-family: serif;
         }
 
         .step-stair {
-            border-left: 4px solid #1E293B;
-            border-bottom: 4px solid #1E293B;
+            border-left: 4px solid #1E40AF;
+            border-bottom: 4px solid #1E40AF;
             width: 40px;
             height: 40px;
             display: inline-block;
@@ -96,7 +96,7 @@
         }
 
         .blueprint-border {
-            border: 8px solid #E2E8F0;
+            border: 8px double #1E40AF;
         }
 
         .pillar-badge {
@@ -226,7 +226,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-slate-50">
+<body class="min-h-screen bg-slate-50" style="background-image: linear-gradient(rgba(30, 64, 175, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(30, 64, 175, 0.05) 1px, transparent 1px); background-size: 30px 30px;">
 
     <!-- NAVIGATION VIEW: INFOGRAPHIC -->
     <div id="view-infographic">
@@ -252,108 +252,98 @@
         </nav>
 
         <!-- Hero Section -->
-        <header class="relative min-h-[90vh] flex items-center justify-center overflow-hidden pt-16" id="hero">
-            <!-- Parallax Background -->
-            <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900"></div>
-            <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,%3Csvg width=\"60\" height=\"60\" viewBox=\"0 0 60 60\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cg fill=\"none\" fill-rule=\"evenodd\"%3E%3Cg fill=\"%23ffffff\" fill-opacity=\"0.1\"%3E%3Cpath d=\"M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        <header class="relative pt-24 pb-48 overflow-hidden" id="hero">
+            <!-- Background -->
+            <div class="absolute inset-0 bg-gradient-to-b from-blue-800 via-blue-700 to-blue-600"></div>
+
+            <!-- Blueprint Grid Overlay -->
+            <div class="absolute inset-0" style="background-image: linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px); background-size: 30px 30px;"></div>
 
             <div class="relative z-10 text-center px-4 max-w-5xl mx-auto">
-                <!-- Early Access Badge -->
-                <div class="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-8 border border-white/20">
-                    <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                    <span class="text-sm font-medium text-white/90">Early Access</span>
-                    <span class="text-sm text-white/60">•</span>
-                    <span class="text-sm text-white/90">Learn With EB</span>
-                </div>
-
-                <h1 class="text-5xl sm:text-6xl md:text-8xl font-black text-white mb-6 tracking-tight leading-none">
-                    Your Life<br><span class="text-amber-400">Blueprint</span>
+                <!-- Main Title -->
+                <h1 class="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-4 tracking-tight italic">
+                    YOUR LIFE BLUEPRINT
                 </h1>
-                <p class="text-xl sm:text-2xl font-light text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">
-                    An interactive experience inspired by Dr. Martin Luther King Jr.'s timeless message to young people.
+                <p class="text-xl sm:text-2xl font-light text-white/80 italic mb-10">
+                    "Be the best of whatever you are."
                 </p>
 
-                <!-- CTA Buttons -->
-                <div class="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-                    <button onclick="scrollToId('speech')" class="group inline-flex items-center justify-center gap-3 bg-white text-slate-900 font-bold px-8 py-4 rounded-full shadow-2xl hover:shadow-amber-500/25 transition-all duration-300 hover:-translate-y-1">
-                        <span>Start Experience</span>
-                        <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                <!-- Navigation Buttons -->
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button onclick="scrollToId('pillar-one')" class="bg-amber-500 hover:bg-amber-400 text-blue-900 font-bold px-6 py-3 rounded-full transition-all duration-300 shadow-lg">
+                        1. Dignity
                     </button>
-                    <button onclick="scrollToId('how-it-works')" class="inline-flex items-center justify-center gap-2 bg-white/10 backdrop-blur-sm text-white font-semibold px-8 py-4 rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        <span>How It Works</span>
+                    <button onclick="scrollToId('pillar-two')" class="bg-white hover:bg-gray-100 text-blue-800 font-bold px-6 py-3 rounded-full transition-all duration-300 shadow-lg">
+                        2. Excellence
+                    </button>
+                    <button onclick="scrollToId('pillar-three')" class="bg-white hover:bg-gray-100 text-blue-800 font-bold px-6 py-3 rounded-full transition-all duration-300 shadow-lg">
+                        3. Persistence
+                    </button>
+                    <button onclick="showView('drafting')" class="bg-white hover:bg-gray-100 text-blue-800 font-bold px-6 py-3 rounded-full transition-all duration-300 shadow-lg">
+                        Draft My Blueprint
                     </button>
                 </div>
-            </div>
-
-            <!-- Scroll Indicator -->
-            <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/50">
-                <span class="text-xs uppercase tracking-widest">Scroll to explore</span>
-                <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
             </div>
         </header>
 
-        <main class="max-w-6xl mx-auto px-4 pb-20 space-y-24 sm:space-y-32">
+        <main class="max-w-6xl mx-auto px-4 pb-12 space-y-12 -mt-32 relative z-20">
 
-            <!-- HOW IT WORKS -->
-            <section id="how-it-works" class="pt-20 scroll-mt-20">
-                <div class="text-center mb-16">
-                    <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">How It Works</span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mb-4">Your Journey in 3 Steps</h2>
-                    <p class="text-slate-500 text-lg max-w-xl mx-auto">A guided experience designed for reflection, discovery, and personal growth.</p>
+            <!-- WELCOME / HOW IT WORKS - Overlapping Card -->
+            <section id="how-it-works" class="scroll-mt-20">
+                <div class="bg-white rounded-3xl shadow-xl p-6 sm:p-8 max-w-4xl mx-auto">
+                    <div class="text-center mb-6">
+                        <span class="inline-block bg-blue-100 text-blue-700 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">Welcome</span>
+                        <h2 class="text-3xl sm:text-4xl font-black text-blue-800 mb-4">An Interactive Experience</h2>
+                        <p class="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+                            This site brings Dr. Martin Luther King Jr.'s powerful message to life through an interactive journey. Explore the three principles from his 1967 speech to students, reflect on their meaning, and create your own personal blueprint for living with purpose.
+                        </p>
+                    </div>
+
+                    <!-- Journey Steps - Horizontal -->
+                    <div class="bg-gray-50 rounded-2xl p-6 sm:p-8">
+                        <p class="text-center text-xs font-bold uppercase tracking-widest text-gray-500 mb-6">Your Journey</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- Step 1 -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">1</div>
+                                <div>
+                                    <h3 class="font-bold text-gray-900 mb-1">Watch & Listen</h3>
+                                    <p class="text-sm text-gray-600">Experience Dr. King's original speech to students</p>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">2</div>
+                                <div>
+                                    <h3 class="font-bold text-gray-900 mb-1">Explore the Principles</h3>
+                                    <p class="text-sm text-gray-600">Discover Dignity, Excellence, and Persistence</p>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 bg-amber-500 text-white rounded-full flex items-center justify-center font-bold flex-shrink-0">3</div>
+                                <div>
+                                    <h3 class="font-bold text-gray-900 mb-1">Draft Your Blueprint</h3>
+                                    <p class="text-sm text-gray-600">Create and save your personal life blueprint</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-center text-gray-400 text-sm mt-6 italic">For students, educators, parents, and community leaders of all ages.</p>
                 </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Step 1 -->
-                    <div class="group relative bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:border-slate-200 transition-all duration-300">
-                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black text-lg shadow-lg group-hover:bg-amber-500 group-hover:scale-110 transition-all duration-300">1</div>
-                        <div class="pt-4">
-                            <div class="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-amber-50 transition-colors">
-                                <svg class="w-7 h-7 text-slate-600 group-hover:text-amber-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-2">Watch & Listen</h3>
-                            <p class="text-slate-500 leading-relaxed">Experience Dr. King's original 1967 speech delivered to students in Philadelphia.</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 2 -->
-                    <div class="group relative bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:border-slate-200 transition-all duration-300">
-                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-slate-900 text-white rounded-2xl flex items-center justify-center font-black text-lg shadow-lg group-hover:bg-amber-500 group-hover:scale-110 transition-all duration-300">2</div>
-                        <div class="pt-4">
-                            <div class="w-14 h-14 bg-slate-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-amber-50 transition-colors">
-                                <svg class="w-7 h-7 text-slate-600 group-hover:text-amber-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-2">Explore Principles</h3>
-                            <p class="text-slate-500 leading-relaxed">Discover the three pillars: Dignity, Excellence, and Persistence through interactive content.</p>
-                        </div>
-                    </div>
-
-                    <!-- Step 3 -->
-                    <div class="group relative bg-white rounded-3xl p-8 shadow-sm border border-slate-100 hover:shadow-xl hover:border-slate-200 transition-all duration-300">
-                        <div class="absolute -top-4 -left-4 w-12 h-12 bg-amber-500 text-slate-900 rounded-2xl flex items-center justify-center font-black text-lg shadow-lg group-hover:scale-110 transition-all duration-300">3</div>
-                        <div class="pt-4">
-                            <div class="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center mb-6">
-                                <svg class="w-7 h-7 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                            </div>
-                            <h3 class="text-xl font-bold text-slate-900 mb-2">Draft Your Blueprint</h3>
-                            <p class="text-slate-500 leading-relaxed">Create your personal life blueprint and save it as a PDF or image keepsake.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <p class="text-center text-slate-400 text-sm mt-12 italic">For students, educators, parents, and community leaders of all ages.</p>
             </section>
 
             <!-- THE SPEECH: Historical Context + Video -->
-            <section id="speech" class="scroll-mt-24">
-                <div class="text-center mb-12">
+            <section id="speech" class="scroll-mt-20">
+                <div class="text-center mb-6">
                     <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">The Speech</span>
                     <h2 class="text-3xl sm:text-5xl font-black text-slate-900 mb-3">"What Is Your Life's Blueprint?"</h2>
                     <p class="text-slate-400 text-sm uppercase tracking-widest font-semibold">Dr. Martin Luther King Jr.</p>
                 </div>
 
                 <!-- Historical Context Card -->
-                <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden max-w-4xl mx-auto mb-12">
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden max-w-4xl mx-auto mb-6">
                     <div class="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
                         <div class="p-8 text-center">
                             <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -388,7 +378,7 @@
                 </div>
 
                 <!-- Key Message -->
-                <div class="max-w-3xl mx-auto mt-12 bg-gradient-to-br from-slate-900 to-slate-800 p-8 sm:p-10 rounded-3xl relative overflow-hidden">
+                <div class="max-w-3xl mx-auto mt-6 bg-gradient-to-br from-blue-900 to-blue-800 p-6 sm:p-8 rounded-2xl relative overflow-hidden">
                     <div class="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl"></div>
                     <div class="relative">
                         <svg class="w-10 h-10 text-amber-500/50 mb-4" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
@@ -400,29 +390,17 @@
                 </div>
             </section>
 
-            <!-- Journey Prompt: Explore Principles -->
-            <section class="text-center py-8">
-                <div class="inline-flex flex-col items-center">
-                    <span class="text-slate-400 text-xs uppercase tracking-widest font-bold mb-2">Continue Your Journey</span>
-                    <p class="text-slate-900 text-xl font-bold mb-4">Explore the Three Principles</p>
-                    <div class="w-10 h-10 bg-slate-100 rounded-full flex items-center justify-center">
-                        <svg class="w-5 h-5 text-slate-400 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
-                        </svg>
-                    </div>
-                </div>
-            </section>
 
             <!-- PILLAR ONE: DIGNITY & SOMEBODINESS -->
             <section id="pillar-one" class="scroll-mt-10">
-                <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100 overflow-hidden">
+                <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
                     <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">Principle One</span>
                     <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mb-4">Dignity, Worth, & Somebodiness</h2>
-                    <p class="text-slate-500 text-lg mb-10 max-w-3xl leading-relaxed">
+                    <p class="text-slate-500 mb-6 max-w-3xl leading-relaxed">
                         Dr. King's first instruction: Believe deeply in your own "Somebodiness." In a world that often pressures us to conform, he called for radical self-acceptance and pride in who you are.
                     </p>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <div class="group bg-gradient-to-br from-slate-900 to-slate-800 p-6 rounded-2xl relative overflow-hidden">
+                        <div class="group bg-gradient-to-br from-blue-900 to-blue-800 p-6 rounded-2xl relative overflow-hidden">
                             <div class="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl"></div>
                             <div class="relative">
                                 <svg class="w-8 h-8 text-amber-500/50 mb-3" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
@@ -448,48 +426,48 @@
 
             <!-- PILLAR TWO: EXCELLENCE -->
             <section id="pillar-two" class="scroll-mt-10">
-                <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-10 rounded-3xl shadow-xl text-white relative overflow-hidden">
-                    <div class="absolute inset-0 opacity-5 pointer-events-none blueprint-grid"></div>
+                <div class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 p-6 sm:p-8 rounded-2xl shadow-xl text-white relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10 pointer-events-none blueprint-grid"></div>
                     <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
                     <div class="relative z-10">
                         <span class="inline-block bg-amber-500 text-slate-900 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">Principle Two</span>
                         <h2 class="text-3xl sm:text-4xl font-black mb-4">The Determination to Achieve Excellence</h2>
-                        <p class="text-slate-300 text-lg mb-10 max-w-3xl leading-relaxed">
+                        <p class="text-blue-100 mb-6 max-w-3xl leading-relaxed">
                             Dr. King challenged students to never settle for "good enough." Don't limit your dreams based on what others expect of you. Strive to be so excellent at your craft that your work speaks for itself and opens doors that were once closed.
                         </p>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                            <div class="group bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center hover:bg-white/10 hover:border-amber-500/30 transition-all duration-300">
-                                <div class="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-500/20 transition-colors">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                            <div class="group bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 text-center hover:bg-white/15 hover:border-amber-500/30 transition-all duration-300">
+                                <div class="w-14 h-14 bg-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-500/20 transition-colors">
                                     <span class="text-2xl">&#127912;</span>
                                 </div>
                                 <h4 class="font-bold mb-1 text-white">Michelangelo</h4>
-                                <p class="text-xs text-slate-400">Paint pictures with absolute precision.</p>
+                                <p class="text-xs text-blue-200">Paint pictures with absolute precision.</p>
                             </div>
-                            <div class="group bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center hover:bg-white/10 hover:border-amber-500/30 transition-all duration-300">
-                                <div class="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-500/20 transition-colors">
+                            <div class="group bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 text-center hover:bg-white/15 hover:border-amber-500/30 transition-all duration-300">
+                                <div class="w-14 h-14 bg-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-500/20 transition-colors">
                                     <span class="text-2xl">&#127929;</span>
                                 </div>
                                 <h4 class="font-bold mb-1 text-white">Beethoven</h4>
-                                <p class="text-xs text-slate-400">Compose music with world-class harmony.</p>
+                                <p class="text-xs text-blue-200">Compose music with world-class harmony.</p>
                             </div>
-                            <div class="group bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center hover:bg-white/10 hover:border-amber-500/30 transition-all duration-300">
-                                <div class="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-500/20 transition-colors">
+                            <div class="group bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 text-center hover:bg-white/15 hover:border-amber-500/30 transition-all duration-300">
+                                <div class="w-14 h-14 bg-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-500/20 transition-colors">
                                     <span class="text-2xl">&#127913;</span>
                                 </div>
                                 <h4 class="font-bold mb-1 text-white">Leontyne Price</h4>
-                                <p class="text-xs text-slate-400">Sing with the power of the Metropolitan Opera.</p>
+                                <p class="text-xs text-blue-200">Sing with the power of the Metropolitan Opera.</p>
                             </div>
-                            <div class="group bg-white/5 backdrop-blur-sm p-6 rounded-2xl border border-white/10 text-center hover:bg-white/10 hover:border-amber-500/30 transition-all duration-300">
-                                <div class="w-14 h-14 bg-slate-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-500/20 transition-colors">
+                            <div class="group bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/20 text-center hover:bg-white/15 hover:border-amber-500/30 transition-all duration-300">
+                                <div class="w-14 h-14 bg-blue-800 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-amber-500/20 transition-colors">
                                     <span class="text-2xl">&#9997;</span>
                                 </div>
                                 <h4 class="font-bold mb-1 text-white">Shakespeare</h4>
-                                <p class="text-xs text-slate-400">Write poetry that echoes through history.</p>
+                                <p class="text-xs text-blue-200">Write poetry that echoes through history.</p>
                             </div>
                         </div>
 
-                        <div class="bg-amber-500 text-slate-900 p-8 rounded-2xl font-bold text-lg md:text-xl text-center italic shadow-2xl">
+                        <div class="bg-amber-500 text-blue-900 p-8 rounded-2xl font-bold text-lg md:text-xl text-center italic shadow-2xl">
                             "Sweep streets so well that all the hosts of Heaven and Earth will have to pause and say: Here lived a great street sweeper who swept his job well."
                         </div>
                     </div>
@@ -498,49 +476,48 @@
 
             <!-- PILLAR THREE: PERSISTENCE & ETERNAL PRINCIPLES -->
             <section id="pillar-three" class="scroll-mt-10">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <div class="bg-white p-10 rounded-3xl shadow-sm border border-slate-100">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-slate-100">
                         <span class="inline-block bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">Principle Three</span>
                         <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mb-4">Eternal Principles & Movement</h2>
-                        <p class="text-slate-500 text-lg mb-10 leading-relaxed">
+                        <p class="text-slate-500 mb-6 leading-relaxed">
                             A blueprint must include a commitment to <strong>Beauty, Love, and Justice</strong>. Recognizing that life is not a "crystal stair," we must maintain forward momentum at all costs.
                         </p>
                         <div class="space-y-6">
                             <div class="flex items-center gap-4">
-                                <div class="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <div class="w-10 h-10 bg-blue-900 rounded-xl flex items-center justify-center flex-shrink-0">
                                     <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                                 </div>
-                                <p class="font-bold text-slate-800 text-xl">"If you can't fly, <span class="text-amber-500">RUN</span>."</p>
+                                <p class="font-bold text-blue-900 text-xl">"If you can't fly, <span class="text-amber-500">RUN</span>."</p>
                             </div>
                             <div class="flex items-center gap-4 pl-8">
-                                <div class="w-10 h-10 bg-slate-800 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <div class="w-10 h-10 bg-blue-800 rounded-xl flex items-center justify-center flex-shrink-0">
                                     <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
                                 </div>
-                                <p class="font-bold text-slate-700 text-xl">"If you can't run, <span class="text-amber-500">WALK</span>."</p>
+                                <p class="font-bold text-blue-800 text-xl">"If you can't run, <span class="text-amber-500">WALK</span>."</p>
                             </div>
                             <div class="flex items-center gap-4 pl-16">
-                                <div class="w-10 h-10 bg-slate-700 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <div class="w-10 h-10 bg-blue-700 rounded-xl flex items-center justify-center flex-shrink-0">
                                     <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"></path></svg>
                                 </div>
-                                <p class="font-bold text-slate-600 text-xl">"If you can't walk, <span class="text-amber-500">CRAWL</span>."</p>
+                                <p class="font-bold text-blue-700 text-xl">"If you can't walk, <span class="text-amber-500">CRAWL</span>."</p>
                             </div>
                             <div class="pt-8 text-center">
-                                <span class="inline-flex items-center gap-2 bg-gradient-to-r from-slate-900 to-slate-800 text-white px-8 py-4 rounded-full font-black uppercase text-lg shadow-xl">
-                                    <svg class="w-5 h-5 text-amber-400 animate-pulse" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                                <span class="inline-flex items-center gap-2 bg-blue-800 text-white px-8 py-4 rounded-full font-black uppercase text-lg shadow-xl animate-pulse">
                                     KEEP MOVING!
                                 </span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-white p-6 sm:p-10 rounded-3xl shadow-sm border border-slate-100">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                          <div class="text-center mb-6">
                             <span class="inline-block bg-amber-100 text-amber-700 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-2">Interactive</span>
                             <h3 class="font-bold text-slate-900 text-lg mb-1">Your Life Blueprint Radar</h3>
                             <p class="text-slate-400 text-sm">Adjust each area to reflect where you are today.</p>
                          </div>
 
-                         <div class="chart-container h-[320px] sm:h-[350px] mb-8"><canvas id="interactiveRadar"></canvas></div>
+                         <div class="chart-container h-[280px] sm:h-[300px] mb-6"><canvas id="interactiveRadar"></canvas></div>
 
                          <!-- Interactive Controls with Prompts -->
                          <div class="space-y-4 w-full">
@@ -596,18 +573,18 @@
                          </div>
 
                          <!-- Reflection Prompt -->
-                         <div class="mt-6 p-4 bg-gradient-to-r from-slate-900 to-slate-800 rounded-xl text-center">
+                         <div class="mt-6 p-4 bg-blue-800 rounded-xl text-center">
                             <p class="text-amber-400 text-xs font-bold uppercase tracking-wider mb-1">Reflection</p>
-                            <p class="text-slate-200 text-sm">"Which area needs the most attention right now?"</p>
+                            <p class="text-blue-100 text-sm">"Which area needs the most attention right now?"</p>
                          </div>
                     </div>
                 </div>
             </section>
 
             <!-- THE POEM SECTION -->
-            <section class="bg-slate-50 p-10 rounded-3xl border border-slate-200 text-center">
+            <section class="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200 text-center">
                 <span class="inline-block bg-amber-100 text-amber-700 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-6">The Closing Wisdom</span>
-                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-10">"Be the BEST of whatever you are"</h2>
+                <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mb-6">"Be the BEST of whatever you are"</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                     <div class="group p-6 bg-white rounded-2xl shadow-sm border border-slate-100 hover:border-amber-200 hover:shadow-lg transition-all duration-300">
                         <p class="text-slate-400 text-xs font-bold mb-2 uppercase tracking-wider">Can't be a Pine?</p>
@@ -626,7 +603,7 @@
                         <p class="text-xl font-black text-slate-900">Be a <span class="text-amber-500">Star</span></p>
                     </div>
                 </div>
-                <div class="mt-12 max-w-3xl mx-auto">
+                <div class="mt-6 max-w-3xl mx-auto">
                     <p class="text-xl md:text-2xl font-bold text-slate-700 leading-relaxed">
                         "For it isn't by size that you win or you fail. Be the <span class="text-amber-500 font-black">BEST</span> of whatever you are."
                     </p>
@@ -635,19 +612,19 @@
 
             <!-- CALL TO ACTION: Draft Your Blueprint -->
             <section class="relative">
-                <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-10 sm:p-16 rounded-3xl shadow-2xl text-white text-center relative overflow-hidden">
-                    <div class="absolute inset-0 opacity-5 pointer-events-none blueprint-grid"></div>
+                <div class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 p-6 sm:p-10 rounded-2xl shadow-2xl text-white text-center relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10 pointer-events-none blueprint-grid"></div>
                     <div class="absolute top-0 left-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
                     <div class="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl"></div>
                     <div class="relative z-10">
-                        <span class="inline-block bg-amber-500 text-slate-900 text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full mb-6">Your Turn</span>
+                        <span class="inline-block bg-amber-500 text-blue-900 text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full mb-6">Your Turn</span>
                         <h2 class="text-3xl sm:text-4xl font-black mb-4">Draft Your Blueprint</h2>
-                        <p class="text-slate-300 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+                        <p class="text-blue-100 text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
                             Now that you've explored the three principles, take a moment to reflect. Answer the prompts, create your personal blueprint, and save it as a reminder of your commitment to living with purpose.
                         </p>
 
                         <div class="flex flex-col sm:flex-row justify-center gap-4 mb-10">
-                            <button onclick="showView('drafting')" class="group bg-amber-500 text-slate-900 font-bold px-10 py-4 rounded-full shadow-2xl hover:bg-amber-400 hover:shadow-amber-500/25 transition-all duration-300 hover:-translate-y-1 text-lg flex items-center justify-center gap-3">
+                            <button onclick="showView('drafting')" class="group bg-amber-500 text-blue-900 font-bold px-10 py-4 rounded-full shadow-2xl hover:bg-amber-400 hover:shadow-amber-500/25 transition-all duration-300 hover:-translate-y-1 text-lg flex items-center justify-center gap-3">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                 </svg>
@@ -656,7 +633,7 @@
                             </button>
                         </div>
 
-                        <div class="flex flex-wrap justify-center gap-8 text-sm text-slate-400">
+                        <div class="flex flex-wrap justify-center gap-8 text-sm text-blue-200">
                             <div class="flex items-center gap-2">
                                 <svg class="w-5 h-5 text-amber-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                                 <span>3 reflection prompts</span>
@@ -679,14 +656,14 @@
 
     <!-- NAVIGATION VIEW: DRAFTING TABLE -->
     <div id="view-drafting" class="hidden-view">
-        <header class="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white py-16 px-4 shadow-xl mb-10 text-center relative overflow-hidden">
-            <div class="absolute inset-0 opacity-5 pointer-events-none blueprint-grid"></div>
+        <header class="bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-16 px-4 shadow-xl mb-10 text-center relative overflow-hidden">
+            <div class="absolute inset-0 opacity-20 pointer-events-none blueprint-grid"></div>
             <div class="absolute top-0 right-0 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
             <div class="max-w-4xl mx-auto relative z-10">
-                <span class="inline-block bg-amber-500 text-slate-900 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">Step 3</span>
+                <span class="inline-block bg-amber-500 text-blue-900 text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full mb-4">Step 3</span>
                 <h1 class="text-3xl md:text-5xl font-black tracking-tight">The Drafting Table</h1>
-                <p class="text-slate-400 mt-3">Constructing your life blueprint, one principle at a time.</p>
-                <button onclick="showView('infographic')" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-slate-400 hover:text-white transition">
+                <p class="text-blue-300 mt-3">Constructing your life blueprint, one principle at a time.</p>
+                <button onclick="showView('infographic')" class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-blue-300 hover:text-white transition">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                     Back to Experience
                 </button>
@@ -718,7 +695,7 @@
                 </div>
 
                 <div class="text-center pt-4">
-                    <button onclick="generateBlueprint()" class="group bg-gradient-to-r from-slate-900 to-slate-800 text-white py-4 px-10 rounded-full font-bold shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 inline-flex items-center gap-3">
+                    <button onclick="generateBlueprint()" class="group bg-blue-800 text-white py-4 px-10 rounded-full font-bold shadow-xl hover:bg-blue-900 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 inline-flex items-center gap-3">
                         <span>Generate My Blueprint</span>
                         <svg class="w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                     </button>
@@ -728,59 +705,54 @@
     </div>
 
     <!-- NAVIGATION VIEW: RESULT VIEW -->
-    <div id="view-result" class="hidden-view min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-20 px-4">
-        <div id="certificate-container" class="max-w-4xl w-full bg-white p-12 md:p-16 rounded-3xl shadow-2xl border-8 border-slate-200 relative">
+    <div id="view-result" class="hidden-view min-h-screen flex items-center justify-center bg-blue-900 py-20 px-4">
+        <div id="certificate-container" class="max-w-4xl w-full bg-white p-12 md:p-16 rounded shadow-2xl blueprint-border relative">
             <div class="absolute inset-0 opacity-5 pointer-events-none blueprint-grid rounded-2xl"></div>
             <div class="relative z-10 space-y-10">
-                <div class="text-center border-b border-slate-200 pb-10">
-                    <div class="inline-flex items-center gap-2 mb-4">
-                        <span class="text-sm font-bold text-slate-900">ELVTE Labs</span>
-                        <span class="px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-amber-100 text-amber-700 rounded-full">Blueprint</span>
-                    </div>
-                    <h1 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight" id="res-name-title">Blueprint</h1>
-                    <p class="text-slate-400 uppercase tracking-[0.2em] mt-3 font-bold text-xs">Architect of a Life of Purpose</p>
+                <div class="text-center border-b-2 border-blue-100 pb-10">
+                    <h1 class="text-4xl md:text-5xl font-black text-blue-800 uppercase tracking-tighter" id="res-name-title">Blueprint</h1>
+                    <p class="text-gray-400 uppercase tracking-[0.3em] mt-2 font-bold text-xs">Architect of a Life of Purpose</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                     <div>
-                        <h4 class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3">Identity & Somebodiness</h4>
-                        <p id="res-dignity" class="text-sm text-slate-700 leading-relaxed border-l-2 border-slate-200 pl-4"></p>
+                        <h4 class="text-[10px] font-black text-blue-800 uppercase tracking-widest mb-4">Identity & Somebodiness</h4>
+                        <p id="res-dignity" class="text-sm text-gray-700 italic border-l-4 border-blue-100 pl-4"></p>
                     </div>
                     <div>
-                        <h4 class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3">Standard of Excellence</h4>
-                        <p id="res-excellence" class="text-sm text-slate-700 leading-relaxed border-l-2 border-slate-200 pl-4"></p>
+                        <h4 class="text-[10px] font-black text-blue-800 uppercase tracking-widest mb-4">Standard of Excellence</h4>
+                        <p id="res-excellence" class="text-sm text-gray-700 italic border-l-4 border-blue-100 pl-4"></p>
                     </div>
                     <div>
-                        <h4 class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-3">Persistence Oath</h4>
-                        <p id="res-moving" class="text-sm text-slate-700 leading-relaxed border-l-2 border-slate-200 pl-4"></p>
+                        <h4 class="text-[10px] font-black text-blue-800 uppercase tracking-widest mb-4">Persistence Oath</h4>
+                        <p id="res-moving" class="text-sm text-gray-700 italic border-l-4 border-blue-100 pl-4"></p>
                     </div>
                 </div>
 
-                <div class="text-center pt-10 border-t border-slate-200">
-                    <p class="text-lg font-bold text-slate-800">"Be the <span class="text-amber-500">BEST</span> of whatever you are."</p>
-                    <p class="text-xs text-slate-400 mt-2">— Dr. Martin Luther King Jr.</p>
+                <div class="text-center pt-10 border-t-2 border-blue-100">
+                    <p class="text-xl font-black text-blue-800 uppercase italic">"Be the BEST of whatever you are."</p>
                     <div class="mt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 no-print px-4 sm:px-0">
-                        <button onclick="downloadAsPDF()" class="bg-slate-900 text-white font-semibold px-6 py-3 rounded-full hover:bg-slate-800 transition active:scale-95 shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto">
+                        <button onclick="downloadAsPDF()" class="bg-blue-800 text-white font-semibold px-6 py-3 rounded-full hover:bg-blue-900 transition active:scale-95 shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
                             </svg>
                             Download PDF
                         </button>
-                        <button onclick="downloadAsJPG()" class="bg-amber-500 text-slate-900 font-semibold px-6 py-3 rounded-full hover:bg-amber-400 transition active:scale-95 shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto">
+                        <button onclick="downloadAsJPG()" class="bg-amber-500 text-blue-900 font-semibold px-6 py-3 rounded-full hover:bg-amber-400 transition active:scale-95 shadow-lg flex items-center justify-center gap-2 w-full sm:w-auto">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
                             </svg>
                             Download JPG
                         </button>
-                        <button onclick="window.print()" class="bg-slate-100 text-slate-700 font-semibold px-6 py-3 rounded-full hover:bg-slate-200 transition active:scale-95 w-full sm:w-auto">Print</button>
-                        <button onclick="showView('infographic')" class="bg-slate-100 text-slate-700 font-semibold px-6 py-3 rounded-full hover:bg-slate-200 transition active:scale-95 w-full sm:w-auto">Start Over</button>
+                        <button onclick="window.print()" class="bg-blue-100 text-blue-800 font-semibold px-6 py-3 rounded-full hover:bg-blue-200 transition active:scale-95 w-full sm:w-auto">Print</button>
+                        <button onclick="showView('infographic')" class="bg-gray-100 text-gray-700 font-semibold px-6 py-3 rounded-full hover:bg-gray-200 transition active:scale-95 w-full sm:w-auto">New Blueprint</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer class="bg-slate-900 text-slate-400 py-20 no-print">
+    <footer class="bg-blue-900 text-blue-200 py-10 no-print">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-12">
                 <!-- Brand -->
@@ -806,9 +778,9 @@
                 </div>
             </div>
 
-            <div class="border-t border-slate-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-                <p class="text-xs text-slate-500">&copy; 2025 ELVTE Labs. An interactive experience inspired by Dr. Martin Luther King Jr.</p>
-                <p class="text-xs text-slate-600">Learn. Create. Share. Repeat.</p>
+            <div class="border-t border-blue-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <p class="text-xs text-blue-300">&copy; 2025 ELVTE Labs. An interactive experience inspired by Dr. Martin Luther King Jr.</p>
+                <p class="text-xs text-blue-400">Learn. Create. Share. Repeat.</p>
             </div>
         </div>
     </footer>
@@ -1033,8 +1005,8 @@
                     datasets: [{
                         label: 'Blueprint Strength',
                         data: [80, 85, 90, 75, 65],
-                        backgroundColor: 'rgba(30, 41, 59, 0.15)',
-                        borderColor: '#1E293B',
+                        backgroundColor: 'rgba(30, 64, 175, 0.2)',
+                        borderColor: '#1E40AF',
                         pointBackgroundColor: '#F59E0B',
                         pointBorderColor: '#fff',
                         pointRadius: 6,
@@ -1056,7 +1028,7 @@
                                 suggestedMin: 0,
                                 suggestedMax: 100,
                                 ticks: { display: false },
-                                pointLabels: { font: { family: 'Poppins', size: 10, weight: '700' }, color: '#334155' }
+                                pointLabels: { font: { family: 'Poppins', size: 10, weight: '700' }, color: '#1E40AF' }
                             }
                         },
                         plugins: { legend: { display: false }, tooltip: commonTooltipOptions }
